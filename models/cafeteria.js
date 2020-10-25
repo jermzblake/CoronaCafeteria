@@ -7,7 +7,7 @@ const menuSchema = new Schema({
 });
 
 const commentSchema = new Schema({
-    user: {type: String},
+    liUser: {type: String},
     content: {type: String}
 }, {
     timestamps: true

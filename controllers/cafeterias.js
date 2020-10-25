@@ -5,5 +5,9 @@ module.exports = {
 }
 
 function index(req, res, next) {
-    res.render('index', { title: 'Cafeteria Index' });
-  };
+    res.render('index', { 
+        title: 'Cafeteria Index',
+        user: req.user,
+        name: req.query.name,
+    });
+};
