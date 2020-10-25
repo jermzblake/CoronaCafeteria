@@ -5,7 +5,7 @@ module.exports = {
 }
 
 function index(req, res, next) {
-    res.render('index', { 
+    res.render('cafeterias/index', { 
         title: 'Cafeteria Index',
         user: req.user,
         name: req.query.name,
