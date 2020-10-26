@@ -8,6 +8,7 @@ var logger = require('morgan');
 var methodOverride = require('method-override');
 
 require('dotenv').config();
+console.log("test import .env=" + process.env.DATABASE_URL)
 require('./config/database');
 require('./config/passport');
 

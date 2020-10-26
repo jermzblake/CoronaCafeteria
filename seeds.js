@@ -18,14 +18,14 @@ const Cafeteria = require('./models/cafeteria');
 // })
 
 let g = new Cafeteria ({
-    name: 'Green Kitchen',
-    location: '123 Lambeau Road',
+    name: 'Blue Kitchen',
+    location: '1 Holmgren Way',
     dineIn: true,
-    capacity: 28,
+    capacity: 18,
     delivery: true,
     takeout: true,
     info: 'Wear a mask!',
-    menu: {food: {item:'turkey club', price:12}, drink: {item:'beer', price:4}}
+    menu: {food: {item:'breakfast sandwich', price:6}, drink: {item:'water', price:1}}
 })
 
 g.save()
