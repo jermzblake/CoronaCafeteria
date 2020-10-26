@@ -18,8 +18,8 @@ const cafeteriaSchema = new Schema({
     location: {type: String},
     dineIn: {type: Boolean, required: true},
     capacity: {type: Number, min: 0},
-    delivery: {type: Boolean},
-    takeout: {type: Boolean},
+    delivery: {type: Boolean, required: true},
+    takeout: {type: Boolean, required: true},
     info: {type: String},
     menu: [menuSchema], // embedding menu schema
     comments: [commentSchema], //embedding comment schema
