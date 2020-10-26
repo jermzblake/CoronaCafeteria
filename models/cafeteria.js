@@ -23,7 +23,7 @@ const cafeteriaSchema = new Schema({
     info: {type: String},
     menu: [menuSchema], // embedding menu schema
     comments: [commentSchema], //embedding comment schema
-    image: {type: String}
+    image: {type: String, default:'https://i.imgur.com/97nUp6Sm.jpg?3'}
 }, {
     timestamps: true
 });
