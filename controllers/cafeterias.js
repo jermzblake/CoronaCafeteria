@@ -4,10 +4,12 @@ module.exports = {
     index
 }
 
-function index(req, res, next) {
+async function index(req, res, next) {
+    const cafeterias = await Cafeteria.find({});
     res.render('cafeterias/index', { 
         title: 'Cafeteria Index',
         user: req.user,
         name: req.query.name,
+        cafeterias
     });
 };
