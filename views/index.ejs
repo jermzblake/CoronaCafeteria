@@ -3,8 +3,12 @@
   <head>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="/stylesheets/materialize.css"  media="screen,projection"/>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -53,55 +57,52 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
           var elems = document.querySelectorAll('.modal');
-          var instances = M.Modal.init(elems, options);
+          var instances = M.Modal.init(elems, {});
         });
     </script>
     
     <form action="/cafeterias" method="POST">
       <div class="row">
         <div class="input-field col s6">
-          <input id="name" type="text" class="validate">
+          <input id="name" type="text" name="name" class="validate">
           <label for="name">Name of Establishment</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="123 YourAddress Street" id="location" type="text" class="validate">
+          <input placeholder="123 YourAddress Street" id="location" type="text" name="address" class="validate">
           <label for="location">Location</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="insert image URL (optional)" id="image" type="text" class="validate">
+          <input placeholder="insert image URL (optional)" id="image" type="text" name="image" class="validate">
           <label for="image">Upload Logo/Image</label>
         </div>
       </div>
       <div class="row">
         <p>
           <label for="takeout">
-            <input type="checkbox" id="takeout"/>
+            <input type="checkbox" id="takeout" name="takeout"/>
             <span>Curbside Pickup?</span>
           </label> <br>
           <label for="delivery">
-            <input type="checkbox" id="delivery"/>
+            <input type="checkbox" id="delivery" name="delivery"/>
             <span>Delivery available?</span>
           </label><br>
           <label for="dineIn">
-            <input type="checkbox" id="dineIn"/>
+            <input type="checkbox" id="dineIn" name="dineIn"/>
             <span>Dine-in available?</span>
           </label>
+          <div class="input-field col s3">
+            <input type="number" id="capacity" name="capacity">
+            <label for="capacity">Capacity #</label>
+          </div>
         </p>
-        <p class="range-field col s6">
-          <label for="capacity">
-            <span>Capacity</span>
-            <input type="range" id="capacity" min="0" max="50" value="0" />
-          </label>
-        </p>
-
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <textarea id="info" class="materialize-textarea"></textarea>
+          <textarea id="info" name="info" class="materialize-textarea"></textarea>
           <label for="info">Input important information here</label>
         </div>
       </div>
@@ -118,7 +119,5 @@
     
   </div>
 
-    <script type="text/javascript" src="/javascripts/materialize.js"></script>
-    <!-- <script src="/javascripts/script.js"></script> -->
   </body>
 </html>

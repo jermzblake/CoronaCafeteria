@@ -3,6 +3,7 @@ const Cafeteria = require('../models/cafeteria');
 module.exports = {
     index,
     show,
+    create,
 
 };
 
@@ -24,4 +25,24 @@ async function show(req, res, next) {
         name: req.query.name,
         cafeteria,
     });
+}
+
+function create(req, res, next) {
+    // convert checkboxes of nothing or "on" to boolean
+    req.body.dineIn = !!req.body.dineIn;
+    req.body.delivery = !!req.body.delivery;
+    req.body.takeout = !!req.body.takeout;
+    for (let key in req.body) {
+        if (req.body[key] === '') delete req.body[key];
+    }
+    const est = new Cafeteria(req.body);
+    est.save(function(err){
+        if(err) {
+        console.log(err);
+        return res.redirect('/');
+        }
+
+        console.log(est);
+        res.redirect('/cafeterias')
+    })
 }
