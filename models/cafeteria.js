@@ -22,7 +22,8 @@ const cafeteriaSchema = new Schema({
     takeout: {type: Boolean},
     info: {type: String},
     menu: [menuSchema], // embedding menu schema
-    comments: [commentSchema] //embedding comment schema
+    comments: [commentSchema], //embedding comment schema
+    image: {type: String}
 }, {
     timestamps: true
 });

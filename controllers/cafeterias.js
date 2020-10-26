@@ -1,8 +1,10 @@
 const Cafeteria = require('../models/cafeteria');
 
 module.exports = {
-    index
-}
+    index,
+    show,
+
+};
 
 async function index(req, res, next) {
     const cafeterias = await Cafeteria.find({});
@@ -13,3 +15,13 @@ async function index(req, res, next) {
         cafeterias
     });
 };
+
+async function show(req, res, next) {
+    const cafeteria = await Cafeteria.findById(req.params.id);
+    res.render('cafeterias/show', {
+        title: 'Red Cafe',
+        user: req.user,
+        name: req.query.name,
+        cafeteria,
+    });
+}
