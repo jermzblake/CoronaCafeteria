@@ -12,10 +12,24 @@
       <p>Delivery <%= cafeteria.delivery ? '\u2705' : '\u274C' %></p>
       <p>Tables available: <%= cafeteria.capacity %></p>
       <i class="material-icons ">edit</i>
-      <form action="/cafeterias/<%= cafeteria._id %>?_method=DELETE"
-        class="delete-form right" method="POST">
-        <button class="material-icons" type="submit">delete_forever</button>
-      </form>
+      <!-- Modal Trigger For Delete -->
+      <a class="material-icons modal-trigger red-text right" href="#modaldelete">delete_forever</a>
+      <!-- Modal Structure For Delete -->
+      <div id="modaldelete" class="modal">
+        <div class="modal-content black-text">
+            <button class="material-icons modal-close right">cancel</button><br>
+            <h1>Delete Establishment</h1>
+            <p>Are you sure you want to delete your establishment?</p>
+            <p>This action cannot be undone!</p>
+        </div>
+        <div class="modal-footer">
+            <form action="/cafeterias/<%= cafeteria._id %>?_method=DELETE"
+            class="delete-form right" method="POST">
+            
+            <button class="waves-effect waves-light btn red" type="submit"><i class="material-icons right">delete_forever</i>Yes, I want to DELETE</button>
+            </form>
+        </div>
+      </div>
     </div>
     <div class="col s9 cadet-blue white-text">
       <!-- Teal page content  -->
@@ -81,6 +95,13 @@
     </div>
 
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(elems, {});
+    });
+</script>
 
 
 
