@@ -34,7 +34,7 @@ function create(req, res, next) {
     req.body.takeout = !!req.body.takeout;
     for (let key in req.body) {
         if (req.body[key] === '') delete req.body[key];
-    }
+    };
     const est = new Cafeteria(req.body);
     est.save(function(err){
         if(err) {
@@ -43,6 +43,6 @@ function create(req, res, next) {
         }
 
         console.log(est);
-        res.redirect('/cafeterias')
-    })
-}
+        res.redirect(`/cafeterias/${est._id}`)
+    });
+};
