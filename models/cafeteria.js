@@ -8,8 +8,8 @@ const menuSchema = new Schema({
 
 const commentSchema = new Schema({
     liUser: {type: String},
-    content: {type: String},
-    rating: {type: Number}
+    content: {type: String, minlength: 3},
+    rating: {type: Number, max: 5}
 }, {
     timestamps: true
 });

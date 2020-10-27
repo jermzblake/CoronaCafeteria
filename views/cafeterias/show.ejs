@@ -26,8 +26,8 @@
             <form class="col s12" action="/cafeterias/<%= cafeteria._id %>/comments" method="POST">
               <div class="row">
                 <div class="input-field col s8 white">
-                  <i class="material-icons prefix black-text">mode_edit</i>
-                  <textarea id="create-comments" class="materialize-textarea"></textarea>
+                  <i class="material-icons prefix black-text">mode_comment</i>
+                  <textarea id="create-comments" class="materialize-textarea" name="content"></textarea>
                   <label for="create-comments">Share your thoughts...</label>
                 </div><br>
                 <button class="btn waves-effect waves-light btn-small dark-purple" type="submit" name="action">Submit
@@ -36,6 +36,43 @@
               </div>
             </form>
           </div>
+      </div><br>
+      <div class="section">
+        <div class="divider"></div>
+        <% if (cafeteria.comments.length) { %>
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Comment</th>
+                  <th>Rating</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% var total = 0 %>
+                <% cafeteria.comments.forEach(function(c) { %>
+                  <% total += c.rating %>
+                  <tr>
+                    <td><%= c.createdAt.toLocaleDateString() %></td>
+                    <td><%= c.content %></td>
+                    <td><%= c.rating %></td>
+                    <td>
+                        <form action="/comments/<%= c._id %>?_method=DELETE"
+                        class="delete-form" method="POST">
+                        <button type="submit">DELETE</button>
+                      </form>
+                    </td>
+                  </tr>
+                  <% }); %>
+                  <tr>
+                    <td colspan="2"></td>
+                    <td><strong><%= (total / cafeteria.comments.length).toFixed(1) %></strong></td>
+                  </tr>
+              </tbody>
+            </table>
+          <% } else { %>
+            <h6>No Comments Yet</h6>
+          <% } %>
       </div>
     </div>
 
