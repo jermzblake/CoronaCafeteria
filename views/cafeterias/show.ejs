@@ -11,7 +11,11 @@
       <p>Curbside Pickup <%= cafeteria.takeout ? '\u2705' : '\u274C' %></p>
       <p>Delivery <%= cafeteria.delivery ? '\u2705' : '\u274C' %></p>
       <p>Tables available: <%= cafeteria.capacity %></p>
-      <i class="material-icons right">edit</i>
+      <i class="material-icons ">edit</i>
+      <form action="/cafeterias/<%= cafeteria._id %>?_method=DELETE"
+        class="delete-form right" method="POST">
+        <button class="material-icons" type="submit">delete_forever</button>
+      </form>
     </div>
     <div class="col s9 cadet-blue white-text">
       <!-- Teal page content  -->

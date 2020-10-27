@@ -4,7 +4,7 @@ module.exports = {
     index,
     show,
     create,
-
+    delete: deleteOne
 };
 
 async function index(req, res, next) {
@@ -20,7 +20,7 @@ async function index(req, res, next) {
 async function show(req, res, next) {
     const cafeteria = await Cafeteria.findById(req.params.id);
     res.render('cafeterias/show', {
-        title: 'Red Cafe',
+        title: `Corona Cafeteria: ${cafeteria.name}`,
         user: req.user,
         name: req.query.name,
         cafeteria,
@@ -40,9 +40,14 @@ function create(req, res, next) {
         if(err) {
         console.log(err);
         return res.redirect('/');
-        }
+        };
 
         console.log(est);
-        res.redirect(`/cafeterias/${est._id}`)
+        res.redirect(`/cafeterias/${est._id}`);
     });
+};
+
+async function deleteOne(req, res, next) {
+    let cafeteria = await Cafeteria.findByIdAndRemove(req.params.id);
+        res.redirect('/cafeterias');
 };
