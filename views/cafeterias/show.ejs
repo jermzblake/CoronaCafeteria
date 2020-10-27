@@ -13,12 +13,26 @@
       <p>Tables available: <%= cafeteria.capacity %></p>
       <i class="material-icons right">edit</i>
     </div>
-
     <div class="col s9 cadet-blue white-text">
       <!-- Teal page content  -->
       <div class="section">
         <h4><%= cafeteria.name %></h4>
         <span><%= cafeteria.info %></span>
+      </div><br><br>
+      <div class="section">
+        <div class="divider"></div>
+        <h6>Leave a Comment or Review</h6>
+        <div class="">
+            <form class="col s12" action="" method="POST">
+              <div class="row">
+                <div class="input-field col s8 white">
+                  <i class="material-icons prefix black-text">mode_edit</i>
+                  <textarea id="create-comments" class="materialize-textarea"></textarea>
+                  <label for="create-comments">Share your thoughts...</label>
+                </div>
+              </div>
+            </form>
+          </div>
       </div>
     </div>
 

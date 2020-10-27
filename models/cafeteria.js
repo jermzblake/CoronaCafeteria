@@ -8,14 +8,15 @@ const menuSchema = new Schema({
 
 const commentSchema = new Schema({
     liUser: {type: String},
-    content: {type: String}
+    content: {type: String},
+    rating: {type: Number}
 }, {
     timestamps: true
 });
 
 const cafeteriaSchema = new Schema({
     name: {type: String, required: true},
-    location: {type: String, required: true},
+    location: {type: String},
     dineIn: {type: Boolean, },
     capacity: {type: Number, min: 0},
     delivery: {type: Boolean, },
@@ -23,7 +24,7 @@ const cafeteriaSchema = new Schema({
     info: {type: String, required: true},
     menu: [menuSchema], // embedding menu schema
     comments: [commentSchema], //embedding comment schema
-    image: {type: String, default:'https://i.imgur.com/97nUp6Sm.jpg?3'}
+    image: {type: String, default:'/images/masked-curbside-pickup.jpg'}
 }, {
     timestamps: true
 });
