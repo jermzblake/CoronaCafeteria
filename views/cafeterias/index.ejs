@@ -10,9 +10,9 @@
                     <img src= <%=c.image %> alt="" class="circle">
                     <span class="title"><%= c.name %></span>
                     <p><%= c.location %><br>
-                    Dine-in <%= c.dineIn ? `yes` : `no` %> 
-                    * Curbside Pickup <%= c.takeout ? `yes` : `no` %> 
-                    * Delivery <%= c.delivery ? `yes` : `no` %>
+                    Dine-in <%= c.dineIn ? '\u2705' : '\u274C' %> 
+                    &#9830 Curbside Pickup <%= c.takeout ? '\u2705' : '\u274C' %> 
+                    &#9830 Delivery <%= c.delivery ? '\u2705' : '\u274C' %>
                     </p>
                     <a href="cafeterias/<%= c._id %>" class="secondary-content"><i class="material-icons">description</i></a>
                 </li>
