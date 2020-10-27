@@ -6,12 +6,20 @@
     <div class="col s3 deep-space white-text">
       <!-- Grey side panel -->
       <img class="responsive-img" src="<%= cafeteria.image %>">
-      <h5><%= cafeteria.name %></h5>
-
+      <h5 class="center">STATUS</h5>
+      <p>Dine-in <%= cafeteria.dineIn ? '\u2705' : '\u274C' %></p>
+      <p>Curbside Pickup <%= cafeteria.takeout ? '\u2705' : '\u274C' %></p>
+      <p>Delivery <%= cafeteria.delivery ? '\u2705' : '\u274C' %></p>
+      <p>Tables available: <%= cafeteria.capacity %></p>
+      <i class="material-icons right">edit</i>
     </div>
 
     <div class="col s9 cadet-blue white-text">
       <!-- Teal page content  -->
+      <div class="section">
+        <h4><%= cafeteria.name %></h4>
+        <span><%= cafeteria.info %></span>
+      </div>
     </div>
 
 </div>

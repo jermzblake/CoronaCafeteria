@@ -15,12 +15,12 @@ const commentSchema = new Schema({
 
 const cafeteriaSchema = new Schema({
     name: {type: String, required: true},
-    location: {type: String},
+    location: {type: String, required: true},
     dineIn: {type: Boolean, },
     capacity: {type: Number, min: 0},
     delivery: {type: Boolean, },
     takeout: {type: Boolean, },
-    info: {type: String},
+    info: {type: String, required: true},
     menu: [menuSchema], // embedding menu schema
     comments: [commentSchema], //embedding comment schema
     image: {type: String, default:'https://i.imgur.com/97nUp6Sm.jpg?3'}
