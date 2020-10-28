@@ -6,6 +6,7 @@ const cafeCtrl = require('../controllers/cafeterias')
 router.get('/', cafeCtrl.index);
 router.get('/:id', cafeCtrl.show);
 router.post('/', cafeCtrl.create);
-router.delete('/:id', cafeCtrl.delete)
+router.put('/:id', cafeCtrl.update)
+router.delete('/:id', cafeCtrl.delete);
 
 module.exports = router;
