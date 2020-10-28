@@ -2,8 +2,9 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const menuSchema = new Schema({
-    food: {type: Array},
-    drink: {type: Array}
+    item: {type: String},
+    description: {type: String},
+    price: {type: Number, min: 0, default: 0.99}
 });
 
 const commentSchema = new Schema({
