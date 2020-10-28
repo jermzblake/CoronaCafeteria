@@ -16,6 +16,7 @@ async function create(req, res, next){
 async function deleteOne(req, res, next) {
     let  cafeterias = await Cafeteria.find({'comments._id': req.params.id});
     let commentDoc = await cafeterias[0].comments.id(req.params.id).remove();
+    console.log(commentDoc)
     cafeterias[0].save(function(err){
         res.redirect(`/cafeterias/${cafeterias[0]._id}`);
     });

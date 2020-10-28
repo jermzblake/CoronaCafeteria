@@ -20,13 +20,11 @@ async function index(req, res, next) {
 
 async function show(req, res, next) {
     const cafeteria = await Cafeteria.findById(req.params.id);
-    const menu = await cafeteria.find({menu});
     res.render('cafeterias/show', {
         title: `Corona Cafeteria: ${cafeteria.name}`,
         user: req.user,
         name: req.query.name,
         cafeteria,
-        menu
     });
 }
 
