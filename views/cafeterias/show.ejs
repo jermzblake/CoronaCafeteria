@@ -50,7 +50,7 @@
 
         <!-- Modal Trigger For Delete -->
     <a class="material-icons modal-trigger red-text right" href="#modaldelete">delete_forever</a>
-
+    
         <!-- Modal Structure For Delete -->
     <div id="modaldelete" class="modal">
         <div class="modal-content black-text">
@@ -76,7 +76,33 @@
         <span><%= cafeteria.info %></span>
       </div><br><br>
         <!--Menu Section -->
-        
+      <div class="section">
+        <div class="divider"></div>
+        <h4 class="center-align">Menu</h4>
+        <% if (cafeteria.menu.length) { %>
+          <ul>
+            <% menu.forEach(function(m) { %>
+            <li>
+              <h6> <%= m.item %> </h6>
+              <span class="right"> <%= m.price %> </span>
+              <p> <%= m.description %> </p>
+            </li>
+            <% }) %>
+          </ul>
+        <% } else { %>
+          <h6>Menu Not Available</h6>
+        <% } %>
+         <!-- Modal Trigger Menu Create-->
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal-menu-create">Create Menu</a>
+
+         <!-- Modal Structure for Menu Create-->
+        <div id="modaledit" class="modal">
+          <div class="modal-content">
+            <form action="/cafeterias/<%= cafeteria._id %>/menus" method="POST">
+              
+            </form>
+          </div>
+      </div>
         <!-- Comment Section -->
       <div class="section">
         <div class="divider"></div>
