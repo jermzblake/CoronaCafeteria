@@ -51,6 +51,9 @@
 
     <img class="responsive-img" src="/images/two-people-share-a-coffee-while-socially-distancing.jpg">
 
+  <!-- Dynamic UI below this line -->
+  <% members.forEach(function(member){ %>  
+   <% if (member._id.equals(user && user._id)) { %>
     <!-- Modal Trigger -->
     <a class="waves-effect waves-light btn modal-trigger" href="#modal1">New Cafe Form</a>
     <!-- <button data-target="modal1" class="btn modal-trigger">Modal</button> -->
@@ -119,6 +122,8 @@
       </div>
       </form>
     </div>
+   <% } %>
+  <% }) %>
   <script>
       document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.modal');

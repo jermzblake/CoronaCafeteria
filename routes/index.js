@@ -1,13 +1,16 @@
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
+const Member = require('../models/member');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  Member.find({}, function (err, members){
   res.render('index', { 
     title: 'Corona Cafeteria',
+    members,
     user: req.user,
-    name: req.query.name,
+    name: req.query.name})
   });
 });
 
