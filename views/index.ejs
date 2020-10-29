@@ -20,6 +20,7 @@
       <nav class="paradise-pink">
         <div class="nav-wrapper">
           <a href="/" class="brand-logo">CoronaCafeteria</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             <li><a href="/cafeterias">Index</a></li>
             <li><a href="#!">pholder</a></li>
@@ -34,11 +35,21 @@
         </div>
       </nav>
     </div>
+    <ul class="sidenav" id="mobile-demo">
+      <li><a href="/cafeterias">Index</a></li>
+            <li><a href="#!">pholder</a></li>
+            <li>
+              <% if (user) { %>
+                <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+              <% } else { %>
+                <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+              <% } %>
+              </li>
+    </ul>
   <div class="container">
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p><br>
+    <h2>Welcome to <%= title %></h2><br>
 
-    <h2>create new cafeteria</h2>
+    <img class="responsive-img" src="/images/two-people-share-a-coffee-while-socially-distancing.jpg">
 
     <!-- Modal Trigger -->
     <a class="waves-effect waves-light btn modal-trigger" href="#modal1">New Cafe Form</a>
@@ -112,6 +123,11 @@
       document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.modal');
         var instances = M.Modal.init(elems, {});
+      });
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems, {});
       });
   </script>
     
