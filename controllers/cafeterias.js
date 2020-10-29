@@ -1,4 +1,5 @@
 const Cafeteria = require('../models/cafeteria');
+const Member = require('../models/member');
 
 module.exports = {
     index,
@@ -10,6 +11,7 @@ module.exports = {
 
 async function index(req, res, next) {
     const cafeterias = await Cafeteria.find({});
+    const members = await Member.find({});
     res.render('cafeterias/index', { 
         title: 'Cafeteria Index',
         members,
@@ -21,6 +23,7 @@ async function index(req, res, next) {
 
 async function show(req, res, next) {
     const cafeteria = await Cafeteria.findById(req.params.id);
+    const members = await Member.find({});
     res.render('cafeterias/show', {
         title: `Corona Cafeteria: ${cafeteria.name}`,
         members,
