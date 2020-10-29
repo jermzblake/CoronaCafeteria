@@ -61,6 +61,7 @@ function update(req, res, next) {
     for (let key in req.body) {
         if (req.body[key] === '') delete req.body[key];
     };
+    console.log(req.body)
     Cafeteria.findByIdAndUpdate(req.params.id,
         req.body,
         {new: true},

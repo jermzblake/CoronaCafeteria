@@ -23,14 +23,22 @@ async function deleteOne(req, res, next) {
 };
 
 async function update(req, res, next) {
+
     let cafeteria = await Cafeteria.findById(req.params.cid);
     let menu = await cafeteria.menu.id(req.params.mid);
-    console.log(req.body)
-    menu.item = req.body;
-    console.log(menu.item)
-    menu.price = req.body;
-    menu.description = req.body;
-    cafeteria.save(function(err){
-            res.redirect(`/cafeterias/${cafeteria._id}`);
-        });
+    console.log(menu)
+    //to remove the empty action field that is created in req.body
+    for (let key in req.body) {
+        if (req.body[key] === '') delete req.body[key];
+    };
+    // to remove [Object: null prototype]
+    const obj = JSON.parse(JSON.stringify(req.body));
+    menu = obj;
+    console.log(menu)
+    try{
+    await cafeteria.save();
+    } catch (err) {
+        console.log(err);
+    }
+        res.redirect(`/cafeterias/${cafeteria._id}`);
 }
