@@ -25,7 +25,6 @@ async function deleteOne(req, res, next) {
 async function update(req, res, next) {
     let cafeteria = await Cafeteria.findById(req.params.cid);
     let menu = await cafeteria.menu.id(req.params.mid);
-    console.log(menu)
     //to remove the empty action field that is created in req.body
     //and set menu keys to req.body keys (.save won't work w/o Object ID)
     for (let key in req.body) {
