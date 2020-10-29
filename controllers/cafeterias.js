@@ -47,10 +47,12 @@ function create(req, res, next) {
         console.log(err);
         return res.redirect('/');
         };
-
-        console.log(est);
-        res.redirect(`/cafeterias/${est._id}`);
-    });
+    })
+        req.user.cafeterias.push(est._id);
+        req.user.save(function(err){
+            console.log(est);
+            res.redirect(`/cafeterias/${est._id}`);
+        });
 };
 
 async function deleteOne(req, res, next) {

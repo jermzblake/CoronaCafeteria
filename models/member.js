@@ -6,7 +6,7 @@ const memberSchema = new Schema ({
     email: String,
     avatar: String,
     googleId: String,
-    cafeteria: [{type: Schema.Types.ObjectId, ref: 'Cafeteria' }],
+    cafeterias: [{type: Schema.Types.ObjectId, ref: 'Cafeteria' }],
     comments: [{type: Schema.Types.ObjectId, ref: 'Cafeteria' }],
 }, {
     timestamps: true
