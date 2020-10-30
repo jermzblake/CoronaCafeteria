@@ -11,61 +11,68 @@
     <p>Curbside Pickup <%= cafeteria.takeout ? '\u2705' : '\u274C' %></p>
     <p>Delivery <%= cafeteria.delivery ? '\u2705' : '\u274C' %></p>
     <p>Tables available: <%= cafeteria.capacity %></p><br><br>
-      <!-- Modal Trigger For Edit -->
-    <a class="material-icons modal-trigger" href="#modaledit">edit</a>
-    
-      <!-- Modal Structure For Edit -->
-    <div id="modaledit" class="modal">
-        <div class="modal-content">
-            <form action="/cafeterias/<%= cafeteria._id %>?_method=PUT" method="POST">
-                <div class="row">
-                    <p>
-                      <label for="takeout">
-                        <input type="checkbox" id="takeout" name="takeout"/>
-                        <span>Curbside Pickup?</span>
-                      </label> <br>
-                      <label for="delivery">
-                        <input type="checkbox" id="delivery" name="delivery"/>
-                        <span>Delivery available?</span>
-                      </label><br>
-                      <label for="dineIn">
-                        <input type="checkbox" id="dineIn" name="dineIn"/>
-                        <span>Dine-in available?</span>
-                      </label>
-                      <div class="input-field col s3">
-                        <input type="number" id="capacity" name="capacity">
-                        <label for="capacity">Capacity #</label>
-                      </div>
-                    </p>
-                  </div>
-        </div>
-        <div class="modal-footer">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Confirm
-                <i class="material-icons right">done</i>
-            </button>
-        </div>
-            </form>
 
-    </div>
+      <!-- Dynamic UI form for cafeteria owner-->
+    <% if ((user) && user.cafeterias.includes(cafeteria._id)) { %>
 
-        <!-- Modal Trigger For Delete -->
-    <a class="material-icons modal-trigger red-text right" href="#modaldelete">delete_forever</a>
-    
-        <!-- Modal Structure For Delete -->
-    <div id="modaldelete" class="modal">
-        <div class="modal-content black-text">
-            <button class="material-icons modal-close right">cancel</button><br>
-            <h1>Delete Establishment</h1>
-            <p>Are you sure you want to delete your establishment?</p>
-            <p>This action cannot be undone!</p>
-        </div>
-        <div class="modal-footer">
-            <form action="/cafeterias/<%= cafeteria._id %>?_method=DELETE"
-            class="delete-form right" method="POST">
-            <button class="waves-effect waves-light btn red" type="submit"><i class="material-icons right">delete_forever</i>Yes, I want to DELETE</button>
-            </form>
-        </div>
-    </div>
+        <!-- Modal Trigger For Edit -->
+      <a class="material-icons modal-trigger" href="#modaledit">edit</a>
+      
+
+        <!-- Modal Structure For Edit -->
+      <div id="modaledit" class="modal">
+          <div class="modal-content">
+              <form action="/cafeterias/<%= cafeteria._id %>?_method=PUT" method="POST">
+                  <div class="row">
+                      <p>
+                        <label for="takeout">
+                          <input type="checkbox" id="takeout" name="takeout"/>
+                          <span>Curbside Pickup?</span>
+                        </label> <br>
+                        <label for="delivery">
+                          <input type="checkbox" id="delivery" name="delivery"/>
+                          <span>Delivery available?</span>
+                        </label><br>
+                        <label for="dineIn">
+                          <input type="checkbox" id="dineIn" name="dineIn"/>
+                          <span>Dine-in available?</span>
+                        </label>
+                        <div class="input-field col s3">
+                          <input type="number" id="capacity" name="capacity">
+                          <label for="capacity">Capacity #</label>
+                        </div>
+                      </p>
+                    </div>
+          </div>
+          <div class="modal-footer">
+              <button class="btn waves-effect waves-light" type="submit" name="action">Confirm
+                  <i class="material-icons right">done</i>
+              </button>
+          </div>
+              </form>
+
+      </div>
+
+          <!-- Modal Trigger For Delete -->
+      <a class="material-icons modal-trigger red-text right" href="#modaldelete">delete_forever</a>
+      
+          <!-- Modal Structure For Delete -->
+      <div id="modaldelete" class="modal">
+          <div class="modal-content black-text">
+              <button class="material-icons modal-close right">cancel</button><br>
+              <h1>Delete Establishment</h1>
+              <p>Are you sure you want to delete your establishment?</p>
+              <p>This action cannot be undone!</p>
+          </div>
+          <div class="modal-footer">
+              <form action="/cafeterias/<%= cafeteria._id %>?_method=DELETE"
+              class="delete-form right" method="POST">
+              <button class="waves-effect waves-light btn red" type="submit"><i class="material-icons right">delete_forever</i>Yes, I want to DELETE</button>
+              </form>
+          </div>
+      </div>
+    <% } %>
+
   </div>
     
           <!-- Teal page content  -->
@@ -86,94 +93,102 @@
               <h6> <u><%= m.item %></u> </h6>
               <span class="right"> $<%= m.price %> </span>
               <p> <%= m.description %> </p>
-              <p>
-                 <!-- Modal Trigger Item Modify-->
-                <a class="modal-trigger right" href="#modal-item-modify-<%= m._id %>"><i class="material-icons">edit</i></a>
 
-                 <!-- Modal Structure Item Modify-->
-                <div id="modal-item-modify-<%= m._id %>" class="modal">
-                  <div class="modal-content">
-                    <form action="/menus/<%= cafeteria._id %>/<%= m._id %>?_method=PUT" method="POST">
-                      <div class="row">
-                        <div class="input-field col s6">
-                          <input id="eitem" type="text" name="item" class="validate" value="<%= m.item %>">
-                          <label for="eitem">Menu Item</label>
+                    <!-- Dynamic UI form for cafeteria owner-->
+              <% if ((user) && user.cafeterias.includes(cafeteria._id)) { %>
+                <p>
+                  <!-- Modal Trigger Item Modify-->
+                  <a class="modal-trigger right" href="#modal-item-modify-<%= m._id %>"><i class="material-icons">edit</i></a>
+
+                  <!-- Modal Structure Item Modify-->
+                  <div id="modal-item-modify-<%= m._id %>" class="modal">
+                    <div class="modal-content">
+                      <form action="/menus/<%= cafeteria._id %>/<%= m._id %>?_method=PUT" method="POST">
+                        <div class="row">
+                          <div class="input-field col s6">
+                            <input id="eitem" type="text" name="item" class="validate" value="<%= m.item %>">
+                            <label for="eitem">Menu Item</label>
+                          </div>
+                          <div class="input-field col s3">
+                            <input id="eprice" type="text" name="price" value="<%= m.price %>">
+                            <label for="eprice">Price :</label>
+                          </div>
                         </div>
-                        <div class="input-field col s3">
-                          <input id="eprice" type="text" name="price" value="<%= m.price %>">
-                          <label for="eprice">Price :</label>
+                        <div class="row">
+                          <div class="input-field col s9">
+                            <textarea id="edescription" name="description" class="materialize-textarea"><%= m.description %></textarea>
+                            <label for="edescription">Description and/or Ingredients</label>
+                          </div>
                         </div>
-                      </div>
-                      <div class="row">
-                        <div class="input-field col s9">
-                          <textarea id="edescription" name="description" class="materialize-textarea"><%= m.description %></textarea>
-                          <label for="edescription">Description and/or Ingredients</label>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Confirm Change
-                        <i class="material-icons">done</i>
-                    </button>
-                  </div>
-                  </form>
-                </div>
-                 <!-- Modal Trigger Item Delete-->
-                <a class="modal-trigger red-text" href="#modal-item-delete-<%= m._id %>"><i class="tiny material-icons">delete_forever</i></a>
-                
-                 <!-- Modal Structure Item Delete-->
-                <div id="modal-item-delete-<%= m._id %>" class="modal">
-                  <div class="modal-content black-text">
-                      <button class="material-icons modal-close right">cancel</button><br>
-                      <h5>Delete Item</h5>
-                      <p>Are you sure you want to delete this item?</p>
-                      <p>This action cannot be undone!</p>
-                  </div>
-                  <div class="modal-footer">
-                    <form action="/menus/<%= m._id %>?_method=DELETE"
-                      class="delete-form" method="POST">
-                      <button class="waves-effect waves-light btn red" type="submit"><i class="material-icons right">delete_forever</i>DELETE ITEM</button>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn waves-effect waves-light" type="submit" name="action">Confirm Change
+                          <i class="material-icons">done</i>
+                      </button>
+                    </div>
                     </form>
                   </div>
-                </div>
+                  <!-- Modal Trigger Item Delete-->
+                  <a class="modal-trigger red-text" href="#modal-item-delete-<%= m._id %>"><i class="tiny material-icons">delete_forever</i></a>
+                  
+                  <!-- Modal Structure Item Delete-->
+                  <div id="modal-item-delete-<%= m._id %>" class="modal">
+                    <div class="modal-content black-text">
+                        <button class="material-icons modal-close right">cancel</button><br>
+                        <h5>Delete Item</h5>
+                        <p>Are you sure you want to delete this item?</p>
+                        <p>This action cannot be undone!</p>
+                    </div>
+                    <div class="modal-footer">
+                      <form action="/menus/<%= m._id %>?_method=DELETE"
+                        class="delete-form" method="POST">
+                        <button class="waves-effect waves-light btn red" type="submit"><i class="material-icons right">delete_forever</i>DELETE ITEM</button>
+                      </form>
+                    </div>
+                  </div>
 
-              </p><br>
+                </p>
+              <% } %>
+                <br>
             </li>
             <% }) %>
           </ul>
         <% } else { %>
           <h6>Menu Not Available</h6>
         <% } %>
-         <!-- Modal Trigger Menu Create-->
-        <a class="waves-effect waves-light btn modal-trigger dark-purple" href="#modal-menu-create">Create Menu Item</a>
 
-         <!-- Modal Structure for Menu Create-->
-        <div id="modal-menu-create" class="modal">
-          <div class="modal-content">
-            <form action="/cafeterias/<%= cafeteria._id %>/menus" method="POST">
-              <div class="row">
-                <div class="input-field col s6">
-                  <input id="mitem" type="text" name="item" class="validate">
-                  <label for="mitem">Menu Item</label>
+              <!-- Dynamic UI form for cafeteria owner-->
+        <% if ((user) && user.cafeterias.includes(cafeteria._id)) { %>
+          <!-- Modal Trigger Menu Create-->
+          <a class="waves-effect waves-light btn modal-trigger dark-purple" href="#modal-menu-create">Create Menu Item</a>
+        <% } %>
+          <!-- Modal Structure for Menu Create-->
+          <div id="modal-menu-create" class="modal">
+            <div class="modal-content">
+              <form action="/cafeterias/<%= cafeteria._id %>/menus" method="POST">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="mitem" type="text" name="item" class="validate">
+                    <label for="mitem">Menu Item</label>
+                  </div>
+                  <div class="input-field col s3">
+                    <input type="text" id="mprice" name="price">
+                    <label for="mprice">Price :</label>
+                  </div>
                 </div>
-                <div class="input-field col s3">
-                  <input type="text" id="mprice" name="price">
-                  <label for="mprice">Price :</label>
+                <div class="row">
+                  <div class="input-field col s9">
+                    <textarea id="description" name="description" class="materialize-textarea"></textarea>
+                    <label for="description">Description and/or Ingredients</label>
+                  </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s9">
-                  <textarea id="description" name="description" class="materialize-textarea"></textarea>
-                  <label for="description">Description and/or Ingredients</label>
+                <div class="modal-footer">
+                  <button class="btn waves-effect waves-light" type="submit" name="action">Add Item
+                    <i class="material-icons right">add_box</i>
+                  </button>
                 </div>
-              </div>
-              <div class="modal-footer">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add Item
-                  <i class="material-icons right">add_box</i>
-                </button>
-              </div>
-            </form>
-          </div>
+              </form>
+            </div>
       </div>
         <!-- Comment Section -->
       <div class="section">
