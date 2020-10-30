@@ -12,6 +12,7 @@ This app is intended to allow users to create a restaurant/bar (establishment) t
 - Materialize.css
 - Passport
 - Google Oauth
+- CSS
 
 ### Getting Started
 - [Corona Cafeteria App](https://corona-cafeteria.herokuapp.com/) 
