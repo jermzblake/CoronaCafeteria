@@ -228,12 +228,15 @@
                     <td><%= c.createdAt.toLocaleDateString() %></td>
                     <td><%= c.content %></td>
                     <td><%= c.rating %></td>
-                    <td>
-                        <form action="/comments/<%= c._id %>?_method=DELETE"
-                        class="delete-form" method="POST">
-                        <button type="submit">DELETE</button>
-                      </form>
-                    </td>
+                      <!-- Dynamic UI form for comment owner-->
+                    <% if ((user) && user.comments.includes(cafeteria._id)) { %>
+                      <td>
+                          <form action="/comments/<%= c._id %>?_method=DELETE"
+                          class="delete-form" method="POST">
+                          <button type="submit">DELETE</button>
+                        </form>
+                      </td>
+                    <% } %>
                   </tr>
                   <% }); %>
                   <tr>

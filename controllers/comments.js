@@ -7,10 +7,13 @@ module.exports = {
 
 async function create(req, res, next){
     let cafeteria = await Cafeteria.findById(req.params.id)
-    cafeteria.comments.push(req.body);
-    cafeteria.save(function(err){
-        res.redirect(`/cafeterias/${cafeteria._id}`);
-    });
+    let comment = cafeteria.comments.push(req.body);
+    console.log(comment._id)
+    cafeteria.save();
+        req.user.comments.push(cafeteria._id)
+        req.user.save(function(err){
+            res.redirect(`/cafeterias/${cafeteria._id}`);
+        });
 };
 
 async function deleteOne(req, res, next) {

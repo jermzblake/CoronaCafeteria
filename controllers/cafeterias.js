@@ -50,7 +50,6 @@ function create(req, res, next) {
     })
         req.user.cafeterias.push(est._id);
         req.user.save(function(err){
-            console.log(est);
             res.redirect(`/cafeterias/${est._id}`);
         });
 };
