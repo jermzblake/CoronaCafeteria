@@ -9,7 +9,7 @@ const menuSchema = new Schema({
 
 const commentSchema = new Schema({
     liUser: {type: String},
-    content: {type: String, minlength: 3},
+    content: {type: String, minlength: 3, maxlength: 180},
     rating: {type: Number, max: 5}
 }, {
     timestamps: true

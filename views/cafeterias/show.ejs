@@ -215,39 +215,26 @@
       <div class="section">
         <div class="divider"></div>
         <% if (cafeteria.comments.length) { %>
-            <table>
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Comment</th>
-                  <th>Rating</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% var total = 0 %>
-                <% cafeteria.comments.forEach(function(c) { %>
-                  <% total += c.rating %>
-                  <tr>
-                    <td><%= c.createdAt.toLocaleDateString() %></td>
-                    <td><%= c.content %></td>
-                    <td><%= c.rating %></td>
-                      <!-- Dynamic UI form for comment owner-->
-                    <% if ((user) && user.comments.includes(cafeteria._id)) { %>
-                      <td>
-                          <form action="/comments/<%= c._id %>?_method=DELETE"
-                          class="delete-form" method="POST">
-                          <button type="submit">DELETE</button>
-                        </form>
-                      </td>
-                    <% } %>
-                  </tr>
-                  <% }); %>
-                  <tr>
-                    <td colspan="2"></td>
-                    <td><strong><%= (total / cafeteria.comments.length).toFixed(1) %></strong></td>
-                  </tr>
-              </tbody>
-            </table>
+          <h5>Comments</h5>
+          <ul>
+              <% cafeteria.comments.forEach(function(c) { %>
+                <li>
+                  <div class="row">
+                    <div class="col s12 m6 white-text">
+                          <span ><i><%= c.liUser %> - <%= c.createdAt.toLocaleDateString()%></i></span><br>
+                          <span><%= c.content %></span>
+                            <!-- Dynamic UI form for comment owner-->
+                          <% if ((user) && user.comments.includes(cafeteria._id)) { %>
+                            <form action="/comments/<%= c._id %>?_method=DELETE"
+                              class="delete-form" method="POST">
+                              <button class="cadet-blue trash" type="submit"><i class="tiny material-icons">delete</i></button>
+                            </form>
+                          <% } %>
+                    </div>
+                  </div>
+                </li>
+          </ul>
+              <% }); %>
           <% } else { %>
             <h6>No Comments Yet</h6>
           <% } %>
