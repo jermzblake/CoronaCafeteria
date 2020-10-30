@@ -28,9 +28,6 @@ passport.use(new GoogleStrategy({
   }
 ));
 
-
-
-
 //converts database document - > session ID
 passport.serializeUser(function(member, done) {
     done(null, member.id);
