@@ -14,8 +14,8 @@ This app is intended to allow users to create a restaurant/bar (establishment) t
 - Google Oauth
 
 ### Getting Started
-[Corona Cafeteria App](https://corona-cafeteria.herokuapp.com/) 
-[Trello Board](https://trello.com/b/M60YEoGE/corona-cafeteria)
+- [Corona Cafeteria App](https://corona-cafeteria.herokuapp.com/) 
+- [Trello Board](https://trello.com/b/M60YEoGE/corona-cafeteria)
 
 #### Next Steps:
 - Add search functionality to Browse page
