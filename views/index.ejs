@@ -46,11 +46,48 @@
               <% } %>
             </li>
     </ul>
+
+    <div class="slider fullscreen hide-on-med-and-down">
+      <ul class="slides">
+        <li>
+          <img src="/images/two-people-share-a-coffee-while-socially-distancing.jpg"> 
+          <div class="caption center-align">
+            <h3>Welcome to Corona Cafeteria</h3>
+            <h5 class="light grey-text text-lighten-3">We make eating safe easy.</h5>
+          </div>
+        </li>
+        <li>
+          <img src="/images/man-wearing-face-mask-flips-open-sign.jpg"> 
+          <div class="caption left-align">
+            <h3>Login Add Your Establishment</h3>
+            <h5 class="light grey-text text-lighten-3">Update patrons on your status.</h5>
+          </div>
+        </li>
+        <li>
+          <img src="/images/man-picks-up-his-order-from-a-local-shop.jpg"> 
+          <div class="caption right-align">
+            <h3>Stay In the Know</h3>
+            <h5 class="light grey-text text-lighten-3">Updates in real time.</h5>
+          </div>
+        </li>
+        <li>
+          <img src="https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/06/Friends_Restaurant_Masks_1296x728-header.jpg?w=1155&h=1528"> 
+          <div class="caption center-align">
+            <h3>Corona Cafteria</h3>
+            <h5 class="light grey-text text-lighten-3">Login and join the community.</h5>
+          </div>
+        </li>
+      </ul>
+    </div>
+
   <!-- <div class="container"> -->
     <h2 class="center-align">Welcome to <%= title %></h2><br>
 
-    <img class="responsive-img" src="/images/two-people-share-a-coffee-while-socially-distancing.jpg">
+    
 
+    <img class="hide-on-large-only responsive-img" src="/images/two-people-share-a-coffee-while-socially-distancing.jpg">
+    
+    <h4 class="center-align"> Login to add your establishment </h4>
   <!-- Dynamic UI below this line -->
   <% members.forEach(function(member){ %>  
    <% if (member._id.equals(user && user._id)) { %>
@@ -133,6 +170,11 @@
       document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.sidenav');
         var instances = M.Sidenav.init(elems, {});
+      });
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.slider');
+        var instances = M.Slider.init(elems, {});
       });
   </script>
     
