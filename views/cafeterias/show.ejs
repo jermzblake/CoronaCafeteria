@@ -79,8 +79,8 @@
     <div class="col s12 m8 l9 cadet-blue white-text">
       <div class="section">
         <h3> <%= cafeteria.name %> </h3>
-        <span class="right"> <%= cafeteria.location %> </span>
-        <span><%= cafeteria.info %></span>
+        <p class="right-align"> <%= cafeteria.location %> </p>
+        <p><%= cafeteria.info %></p>
       </div><br><br>
         <!--Menu Section -->
       <div class="section">
@@ -196,6 +196,9 @@
         <h6>Leave a Comment or Review</h6>
         <div class="">
             <form class="col s12" action="/cafeterias/<%= cafeteria._id %>/comments" method="POST">
+              <% if(user) { %>      <!-- add logged in user name to comment behind the scenes-->
+                <input class="hidden" value="<%= user.name %>" name="liUser">
+              <% } %>
               <div class="row">
                 <div class="input-field col s8 white">
                   <i class="material-icons prefix black-text">mode_comment</i>
