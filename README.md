@@ -18,9 +18,9 @@ This app is intended to allow users to create a restaurant/bar (establishment) t
 - [Corona Cafeteria App](https://corona-cafeteria.herokuapp.com/) 
 - [Trello Board](https://trello.com/b/M60YEoGE/corona-cafeteria)
 
-#### Next Steps:
+### Next Steps:
 - Add search functionality to Browse page
-- Allow users to check-in and check-out of establishments (store those checkins in the establishment model)
-- Aloow users to like and or comment on other user comments
+- Allow users to check-in and check-out of establishments (store those checkins in the cafeteria model)
+- Allow users to like and or comment on other user comments
 - Add map functionality through an API like Google Maps
 
