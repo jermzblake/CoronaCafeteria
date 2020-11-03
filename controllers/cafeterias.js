@@ -10,14 +10,17 @@ module.exports = {
 };
 
 async function index(req, res, next) {
-    const cafeterias = await Cafeteria.find({});
+      // the user has submitted the search form or now
+    let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
+    // Default to sorting by name
+    const cafeterias = await Cafeteria.find(modelQuery);
     const members = await Member.find({});
     res.render('cafeterias/index', { 
         title: 'Cafeteria Index',
         members,
         user: req.user,
         name: req.query.name,
-        cafeterias
+        cafeterias,
     });
 };
 
