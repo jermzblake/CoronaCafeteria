@@ -51,7 +51,7 @@ function create(req, res, next) {
         return res.redirect('/');
         };
     })
-        req.user.cafeterias.push(est._id);
+        req.user.cafeterias.push(est._id);  // should be querying the actual model (Member) using req.user as a parameter. Then pusing the info to the specific member model and saving (<membervariable>.save)
         req.user.save(function(err){
             res.redirect(`/cafeterias/${est._id}`);
         });
