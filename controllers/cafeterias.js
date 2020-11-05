@@ -36,7 +36,7 @@ async function show(req, res, next) {
     });
 }
 
-function create(req, res, next) {
+async function create(req, res, next) {
     // convert checkboxes of nothing or "on" to boolean
     req.body.dineIn = !!req.body.dineIn;
     req.body.delivery = !!req.body.delivery;
@@ -50,9 +50,10 @@ function create(req, res, next) {
         console.log(err);
         return res.redirect('/');
         };
-    })
-        req.user.cafeterias.push(est._id);  // should be querying the actual model (Member) using req.user as a parameter. Then pusing the info to the specific member model and saving (<membervariable>.save)
-        req.user.save(function(err){
+    })  
+        const owner = await Member.findById(req.user.id)
+        owner.cafeterias.push(est._id);  // should be querying the actual model (Member) using req.user as a parameter. Then pusing the info to the specific member model and saving (<membervariable>.save)
+        owner.save(function(err){
             res.redirect(`/cafeterias/${est._id}`);
         });
 };
