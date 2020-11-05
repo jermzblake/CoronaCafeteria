@@ -16,9 +16,9 @@ async function create(req, res, next){
 };
 
 async function deleteOne(req, res, next) {
-    let  cafeterias = await Cafeteria.find({'comments._id': req.params.id});
-    let commentDoc = await cafeterias[0].comments.id(req.params.id).remove();
-    cafeterias[0].save(function(err){
-        res.redirect(`/cafeterias/${cafeterias[0]._id}`);
+    let  cafeteria = await Cafeteria.findOne({'comments._id': req.params.id});
+    let commentDoc = await cafeteria.comments.id(req.params.id).remove();
+    cafeteria.save(function(err){
+        res.redirect(`/cafeterias/${cafeteria._id}`);
     });
 };
