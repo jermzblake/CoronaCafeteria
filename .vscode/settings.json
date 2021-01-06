@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/6544445f-a379-40ed-bda7-e0268bff330f/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/coronacafeteria",
+    "appService.deploySubpath": "."
+}
